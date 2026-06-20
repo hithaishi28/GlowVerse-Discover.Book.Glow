@@ -88,7 +88,7 @@ export function SalonDetailsPage() {
 
   useEffect(() => {
     if (!toast) return undefined;
-    const timer = setTimeout(() => setToast(''), 2500);
+    const timer = setTimeout(() => setToast(''), /added to cart/i.test(toast) ? 4000 : 2500);
     return () => clearTimeout(timer);
   }, [toast]);
 
@@ -144,10 +144,10 @@ export function SalonDetailsPage() {
     }
     try {
       await addToCart({ salonId: salon._id, serviceId: service._id, quantity: 1 });
-      setToast('Service added to cart.');
+      setToast('Added to cart');
     } catch (error) {
       addLocalCartService(salon, service);
-      setToast('Service added to cart.');
+      setToast('Added to cart');
     }
   }
 
