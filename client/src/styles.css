@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(190, 52, 85, .22), transparent 32rem),
+    radial-gradient(circle at 85% 0%, rgba(197, 151, 74, .16), transparent 28rem),
+    linear-gradient(135deg, #fff8f2 0%, #f8f5ef 42%, #f7edf3 100%);
+  color: #111827;
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(190, 52, 85, .24), transparent 32rem),
+    radial-gradient(circle at 85% 0%, rgba(197, 151, 74, .16), transparent 28rem),
+    linear-gradient(135deg, #111827 0%, #1b1526 50%, #2a1323 100%);
+  color: #f8f5ef;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+select option {
+  background: #ffffff;
+  color: #111827;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 dark:focus-visible:ring-offset-ink;
+}
+
+.section {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.48), transparent 28%, rgba(190,52,85,.10) 55%, transparent 74%),
+    radial-gradient(circle at 50% 120%, rgba(98, 157, 121, .13), transparent 30rem);
+  mix-blend-mode: soft-light;
+}
+
+.site-ambient-bg {
+  position: fixed;
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .85;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(190, 52, 85, .24), transparent 15rem),
+    radial-gradient(circle at 76% 8%, rgba(197, 151, 74, .22), transparent 16rem),
+    radial-gradient(circle at 70% 82%, rgba(98, 157, 121, .18), transparent 18rem),
+    conic-gradient(from 140deg at 50% 50%, rgba(190,52,85,.08), rgba(197,151,74,.12), rgba(98,157,121,.08), rgba(190,52,85,.08));
+  filter: blur(18px) saturate(1.2);
+  animation: ambient-pan 26s ease-in-out infinite alternate;
+}
+
+.section {
+  animation: page-rise .48s ease both;
+}
+
+.shadow-glow,
+.rounded-xl,
+.rounded-2xl {
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background-color .22s ease;
+}
+
+.shadow-glow:hover {
+  box-shadow: 0 24px 70px rgba(190, 52, 85, .17), 0 8px 28px rgba(17, 24, 39, .12);
+}
+
+.glass-card {
+  @apply border border-white/10 bg-white/10 shadow-glow backdrop-blur-xl;
+}
+
+.floating-beauty {
+  animation: float-beauty 8s ease-in-out infinite;
+}
+
+.animation-delay-0 {
+  animation-delay: 0ms;
+}
+
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animation-delay-1200 {
+  animation-delay: 1200ms;
+}
+
+.animation-delay-1600 {
+  animation-delay: 1600ms;
+}
+
+.animation-delay-2200 {
+  animation-delay: 2200ms;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3000ms;
+}
+
+.beauty-particles {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.35) 1px, transparent 1px),
+    radial-gradient(circle, rgba(197,151,74,.35) 1px, transparent 1px);
+  background-position: 0 0, 26px 26px;
+  background-size: 52px 52px;
+  opacity: .32;
+  animation: drift-particles 22s linear infinite;
+}
+
+@keyframes float-beauty {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+  }
+  50% {
+    transform: translate3d(12px, -24px, 0) rotate(7deg);
+  }
+}
+
+@keyframes drift-particles {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-52px, 52px, 0);
+  }
+}
+
+@keyframes ambient-pan {
+  0% {
+    transform: translate3d(-2%, -1%, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 1%, 0) rotate(7deg) scale(1.05);
+  }
+  100% {
+    transform: translate3d(1%, -2%, 0) rotate(-5deg) scale(1.04);
+  }
+}
+
+@keyframes page-rise {
+  from {
+    opacity: .001;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-beauty,
+  .beauty-particles,
+  .site-ambient-bg,
+  .section {
+    animation: none;
+  }
+
+  .shadow-glow,
+  .rounded-xl,
+  .rounded-2xl {
+    transition: none;
+  }
+}
