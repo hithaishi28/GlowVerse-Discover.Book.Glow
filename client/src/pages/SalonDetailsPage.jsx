@@ -145,9 +145,11 @@ export function SalonDetailsPage() {
     try {
       await addToCart({ salonId: salon._id, serviceId: service._id, quantity: 1 });
       setToast('Added to cart');
+      setTimeout(() => setToast(""), 2000);
     } catch (error) {
       addLocalCartService(salon, service);
       setToast('Added to cart');
+      setTimeout(() => setToast(""), 2000);
     }
   }
 
