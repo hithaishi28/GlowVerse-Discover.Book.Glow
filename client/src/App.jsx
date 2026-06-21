@@ -1,3 +1,4 @@
+import { ScrollToTop } from './components/common/ScrollToTop.jsx';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from './components/layout/Footer.jsx';
 import { Navbar } from './components/layout/Navbar.jsx';
@@ -42,6 +43,7 @@ export default function App() {
       <div className="site-ambient-bg" aria-hidden="true" />
       {!isAuthShell && <Navbar />}
       <main className="relative z-10">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<LoginLandingPage />} />
           <Route path="/demo" element={<DemoPortalPage />} />
