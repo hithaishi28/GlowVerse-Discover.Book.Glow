@@ -137,35 +137,20 @@ export function SalonDetailsPage() {
     }
   }
 
-  async function addService(service) {
-    if (!user || user.role !== 'user') {
-      window.location.assign('/client/login');
-      return;
-    }
-    try {
-      await addToCart({ salonId: salon._id, serviceId: service._id, quantity: 1 });
-
-      setToast('Added to cart');
-
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }, 100);
-    } catch (error) {
-      addLocalCartService(salon, service);
-
-      setToast('Added to cart');
-
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }, 100);
-    }
+async function addService(service) {
+  if (!user || user.role !== 'user') {
+    window.location.assign('/client/login');
+    return;
   }
+
+  try {
+    await addToCart({ salonId: salon._id, serviceId: service._id, quantity: 1 });
+    setToast('Added to cart');
+  } catch (error) {
+    addLocalCartService(salon, service);
+    setToast('Added to cart');
+  }
+}
 
   return (
     <section className="section py-8">
