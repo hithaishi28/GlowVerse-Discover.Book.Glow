@@ -145,10 +145,18 @@ async function addService(service) {
 
   try {
     await addToCart({ salonId: salon._id, serviceId: service._id, quantity: 1 });
-    setToast('Added to cart');
+
+    setToast('');
+    setTimeout(() => {
+      setToast('Added to cart');
+    }, 50);
   } catch (error) {
     addLocalCartService(salon, service);
-    setToast('Added to cart');
+
+    setToast('');
+    setTimeout(() => {
+      setToast('Added to cart');
+    }, 50);
   }
 }
 
