@@ -43,3 +43,6 @@ After seeding:
 - [Deployment Guide](docs/DEPLOYMENT.md)
 - [Production Checklist](docs/PRODUCTION_CHECKLIST.md)
 - [Razorpay and Google Maps Setup](docs/RAZORPAY_GOOGLE_SETUP.md)
+
+
+Deployed with Vercel.
